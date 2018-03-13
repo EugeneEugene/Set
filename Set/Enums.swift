@@ -21,18 +21,15 @@ enum Shape: String {
     case Sphere = "●", Square = "■", Triangle = "▲"
 }
 
-extension UIColor {
-    struct ColorForCards {
-        static var red: UIColor  { return .red }
-        static var green: UIColor { return .green }
-        static var purple: UIColor { return .purple }
+extension Array {
+    mutating func shuffle() {
+        self = (GKRandomSource.sharedRandom().arrayByShufflingObjects(in: self) as! Array<Element>)
     }
 }
 
-extension Array {
-    mutating func shuffle() -> Array<Element> {
-        self = (GKRandomSource.sharedRandom().arrayByShufflingObjects(in: self) as! Array<Element>)
-        return self
+extension Int {
+    func arc4random() -> Int {
+        return  Int(arc4random_uniform(UInt32(self)))
     }
 }
 
