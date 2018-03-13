@@ -30,9 +30,9 @@ extension UIColor {
 }
 
 extension Array {
-    func shuffle() -> Array<Element> {
-        let shuffled = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: self)
-        return (shuffled as! Array<Element>)
+    mutating func shuffle() -> Array<Element> {
+        self = (GKRandomSource.sharedRandom().arrayByShufflingObjects(in: self) as! Array<Element>)
+        return self
     }
 }
 

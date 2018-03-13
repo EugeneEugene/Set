@@ -18,12 +18,13 @@ class ViewController: UIViewController {
     var shapes: [Shape] = [.Square, .Sphere, .Triangle]
     var shadings: [Shading] = [.Striped, .Filled, .Outlined]
     
-    func createDeck() {
+    func createAndShuffleDeck() {
         for number in numbers {
             for color in colors {
                 for shape in shapes {
                     for shading in shadings {
                         deck.append(Card(put: shape, times: number, apply: shading, paint: color))
+                        deck.shuffle()
                     }
                 }
             }
@@ -33,7 +34,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func start(_ sender: UIButton) {
-        createDeck()
+        createAndShuffleDeck()
     }
     
     
