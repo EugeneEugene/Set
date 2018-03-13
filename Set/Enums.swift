@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GameplayKit
 
 enum Shading {
     case Striped, Filled, Outlined
@@ -25,6 +26,13 @@ extension UIColor {
         static var red: UIColor  { return .red }
         static var green: UIColor { return .green }
         static var purple: UIColor { return .purple }
+    }
+}
+
+extension Array {
+    func shuffle() -> Array<Element> {
+        let shuffled = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: self)
+        return (shuffled as! Array<Element>)
     }
 }
 
