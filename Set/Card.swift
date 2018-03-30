@@ -9,12 +9,11 @@
 import UIKit
 
 struct Card {
-    var color: UIColor
-    var shape: Shape
-    var number: Number
-    var shading: Shading
-    var isMatched = false
-    var isSelected = false
+    
+    let color: UIColor
+    let shape: Shape
+    let number: Number
+    let shading: Shading
     
     init(put shape: Shape, times number: Number, apply shading: Shading, paint color: UIColor) {
         self.shape = shape

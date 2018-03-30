@@ -21,6 +21,7 @@ enum Shape: String {
     case Sphere = "●", Square = "■", Triangle = "▲"
 }
 
+
 extension Array {
     mutating func shuffle() {
         self = (GKRandomSource.sharedRandom().arrayByShufflingObjects(in: self) as! Array<Element>)

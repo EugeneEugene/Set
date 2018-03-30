@@ -36,7 +36,7 @@ class ViewController: UIViewController {
     func updateViewFromModel() {
         for button in buttons {
             let card = deck.remove(at: deck.count.arc4random())
-            button.backgroundColor = UIColor.white
+            button.backgroundColor = UIColor.orange
             renderCard(render: card, on: button)
         }
     }
@@ -74,6 +74,9 @@ class ViewController: UIViewController {
         updateViewFromModel()
     }
     
+    @IBAction func touchCard(_ sender: UIButton) {
+        
+    }
     
     
 }
