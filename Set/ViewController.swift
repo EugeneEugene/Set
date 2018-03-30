@@ -13,31 +13,15 @@ class ViewController: UIViewController {
     var deck = [Card]()
     
     @IBOutlet var buttons: [UIButton]!
-    let numbers:[Number] = [.One, .Two, .Three]
-    let colors: [UIColor] = [.red, .green, .purple]
-    let shapes: [Shape] = [.Square, .Sphere, .Triangle]
-    let shadings: [Shading] = [.Striped, .Filled, .Outlined]
     
-    func createAndShuffleDeck() {
-        for number in numbers {
-            for color in colors {
-                for shape in shapes {
-                    for shading in shadings {
-                        deck.append(Card(put: shape, times: number, apply: shading, paint: color))
-//                        deck.shuffle()
-                    }
-                }
-            }
-        }
-        print("in deck: \(deck.count)")
-        print("in outlet collection: \(buttons.count)")
-    }
+    lazy var game = Set()
     
     func updateViewFromModel() {
         for button in buttons {
-            let card = deck.remove(at: deck.count.arc4random())
+            let card = game.cards.remove(at: deck.count.arc4random())
             button.backgroundColor = UIColor.orange
             renderCard(render: card, on: button)
+            button.isHidden = false
         }
     }
     
@@ -70,7 +54,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func start(_ sender: UIButton) {
-        createAndShuffleDeck()
         updateViewFromModel()
     }
     

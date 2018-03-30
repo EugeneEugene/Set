@@ -8,14 +8,28 @@
 
 import UIKit
 
-class Set: UIView {
+struct Set {
     
-    /*
-     // Only override draw() if you perform custom drawing.
-     // An empty implementation adversely affects performance during animation.
-     override func draw(_ rect: CGRect) {
-     // Drawing code
-     }
-     */
+    var matchedCards = [Card]()
+    var cards = [Card]()
+    
+    let numbers:[Number] = [.One, .Two, .Three]
+    let colors: [UIColor] = [.red, .green, .purple]
+    let shapes: [Shape] = [.Square, .Sphere, .Triangle]
+    let shadings: [Shading] = [.Striped, .Filled, .Outlined]
+    
+    init() {
+        for number in numbers {
+            for color in colors {
+                for shape in shapes {
+                    for shading in shadings {
+                        cards.append(Card(put: shape, times: number, apply: shading, paint: color))                    }
+                }
+            }
+        }
+        cards.shuffle()
+        print("in deck: \(cards.count)")
+        print("in outlet collection: \(cards.count)")
+    }
     
 }
