@@ -8,7 +8,13 @@
 
 import UIKit
 
-struct Card {
+struct Card: Equatable {
+    
+    static func ==(lhs: Card, rhs: Card) -> Bool {
+        return (lhs.color == rhs.color && lhs.shape == rhs.shape &&
+        lhs.number == rhs.number && lhs.shading == rhs.shading)
+    }
+    
     
     let color: UIColor
     let shape: Shape
