@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     func updateViewFromModel() {
         for button in buttons {
             let card = game.cards.remove(at: deck.count.arc4random())
-            button.backgroundColor = UIColor.orange
+            button.backgroundColor = UIColor.white
             renderCard(render: card, on: button)
             button.isHidden = false
         }
@@ -45,7 +45,7 @@ class ViewController: UIViewController {
         case .Outlined:
             foregroundColor = card.color.withAlphaComponent(CGFloat(1))
             attributes = [
-                .strokeWidth : 1,
+                .strokeWidth : 6,
                 .foregroundColor : foregroundColor
             ]
         }
