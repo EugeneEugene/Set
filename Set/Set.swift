@@ -12,11 +12,14 @@ struct Set {
     
     var matchedCards = [Card]()
     var cards = [Card]()
+    var cardsOnTable = [Card]()
+    var chosenCards = [Card]()
     
     let numbers:[Number] = [.One, .Two, .Three]
     let colors: [UIColor] = [.red, .green, .purple]
     let shapes: [Shape] = [.Square, .Sphere, .Triangle]
     let shadings: [Shading] = [.Striped, .Filled, .Outlined]
+    
     
     init() {
         for number in numbers {
@@ -27,6 +30,7 @@ struct Set {
                 }
             }
         }
+        
         cards.shuffle()
         print("in deck: \(cards.count)")
         print("in outlet collection: \(cards.count)")
