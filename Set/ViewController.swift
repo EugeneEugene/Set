@@ -74,10 +74,6 @@ class ViewController: UIViewController {
   
   
   @IBAction func touchCard(_ sender: UIButton) {
-    guard let buttonIndex = buttons.index(of: sender) else{
-      print("No button on the screen")
-      return
-    }
     // if player has chosen less then three card
     if game.chosenCards.count < 3 {
       if let indexOfChosenCard = buttons.index(of: sender) {
@@ -86,8 +82,10 @@ class ViewController: UIViewController {
         
         if game.chosenCards.contains(chosenCard) {
           unSelectCard(select: sender)
-          chosenButtons.remove(at: buttonIndex)
-          game.chosenCards.remove(at: game.chosenCards.index(of: chosenCard)!)
+          if let indexOfUnselectedCard = chosenButtons.index(of: sender) {
+            chosenButtons.remove(at: indexOfUnselectedCard)
+            game.chosenCards.remove(at: game.chosenCards.index(of: chosenCard)!)
+          }
         }
         else {
           seletCard(select: sender)
@@ -109,9 +107,14 @@ class ViewController: UIViewController {
           button.isHidden = true
           button.isEnabled = false
         }
-        
-        
       }
+      else {
+        for button in chosenButtons {
+          unSelectCard(select: button)
+        }
+      }
+      chosenButtons.removeAll()
+      game.chosenCards.removeAll()
     }
     print("-------------------------------\n")
     print("chosen cards: \(game.chosenCards.count)")
