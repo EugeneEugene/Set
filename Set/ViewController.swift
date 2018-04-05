@@ -13,6 +13,7 @@ class ViewController: UIViewController {
   lazy var game = SetModel()
   var chosenButtons = [UIButton]()
   
+  @IBOutlet weak var addMore: UIButton!
   
   func updateViewFromModel() {
     
@@ -76,6 +77,13 @@ class ViewController: UIViewController {
   
   @IBAction func touchCard(_ sender: UIButton) {
     // if player has chosen less then three card
+    if chosenButtons.count == 3 {
+      for button in chosenButtons {
+        unSelectCard(select: button)
+      }
+      chosenButtons.removeAll()
+      game.chosenCards.removeAll()
+    }
     if game.chosenCards.count < 3 {
       if let indexOfChosenCard = buttons.index(of: sender) {
         
@@ -95,32 +103,34 @@ class ViewController: UIViewController {
         }
       }
     }
-      
-      //if three cards has chosen
-    else {
+    if chosenButtons.count == 3 {
       let card1 = game.chosenCards[0]
       let card2 = game.chosenCards[1]
       let card3 = game.chosenCards[2]
-      
       if game.areMakeASet(firsCard: card1, secondCard: card2, thirdCard: card3) {
-        for button in chosenButtons {
-          unSelectCard(select: button)
-          button.isHidden = true
-          button.isEnabled = false
-        }
+        showMatching()
       }
       else {
-        for button in chosenButtons {
-          unSelectCard(select: button)
-        }
+        showNotMatching()
       }
-      chosenButtons.removeAll()
-      game.chosenCards.removeAll()
     }
     print("-------------------------------\n")
     print("chosen cards: \(game.chosenCards.count)")
   }
   
+  func showMatching() {
+    for button in chosenButtons {
+      button.layer.borderWidth = 5
+      button.layer.borderColor = UIColor.green.cgColor
+    }
+  }
+  
+  func showNotMatching() {
+    for button in chosenButtons {
+      button.layer.borderWidth = 5
+      button.layer.borderColor = UIColor.red.cgColor
+    }
+  }
   
   func seletCard(select button: UIButton) {
     button.layer.borderWidth = 3
@@ -133,6 +143,9 @@ class ViewController: UIViewController {
   }
 
   @IBAction func addThreeCards(_ sender: UIButton) {
+    if game.cards.count < 3 {
+      sender.isEnabled = false
+    }
     var threeEmptyButtons = [UIButton]()
     for button in buttons {
       if button.isHidden {
