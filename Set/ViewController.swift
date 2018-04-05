@@ -13,6 +13,7 @@ class ViewController: UIViewController {
   lazy var game = SetModel()
   var chosenButtons = [UIButton]()
   
+  
   func updateViewFromModel() {
     
   }
@@ -126,13 +127,26 @@ class ViewController: UIViewController {
     button.layer.borderColor = UIColor.blue.cgColor
   }
   
-  
   func unSelectCard(select button: UIButton) {
     button.layer.borderWidth = 0
     button.layer.borderColor = UIColor.white.cgColor
   }
-  
-  
-  
+
+  @IBAction func addThreeCards(_ sender: UIButton) {
+    var threeEmptyButtons = [UIButton]()
+    for button in buttons {
+      if button.isHidden {
+        threeEmptyButtons.append(button)
+      }
+      if threeEmptyButtons.count >= 3 {
+        threeEmptyButtons.map({ (button: UIButton) -> UIButton in
+          button.isHidden = false
+          return button
+        })
+        break
+      }
+    }
+
+  }
 }
 

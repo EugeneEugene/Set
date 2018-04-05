@@ -245,12 +245,16 @@
                                             <action selector="startNewGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O2f-UC-gi1"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mm1-AP-lRc">
-                                        <rect key="frame" x="287.5" y="0.0" width="55.5" height="39"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kmy-yf-kgA">
+                                        <rect key="frame" x="279" y="0.0" width="64" height="39"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <color key="textColor" red="0.070588235294117646" green="0.2196078431372549" blue="0.74901960784313726" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" red="0.078431372549019607" green="0.14117647058823529" blue="0.72549019607843135" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addThreeCards:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xfv-Ec-rSc"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
