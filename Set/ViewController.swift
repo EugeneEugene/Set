@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  Set
-//
-//  Created by eugene on 11/03/2018.
-//  Copyright © 2018 eugene. All rights reserved.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
@@ -69,6 +61,7 @@ class ViewController: UIViewController {
         button.isHidden = false
       }
       countUnhiddentCards += 1
+      //can insert closure here
       button.layer.cornerRadius = 8.0
       game.cardsOnTable.append(card)
     }
@@ -76,7 +69,6 @@ class ViewController: UIViewController {
   
   
   @IBAction func touchCard(_ sender: UIButton) {
-    // if player has chosen less then three card
     if chosenButtons.count == 3 {
       for button in chosenButtons {
         unSelectCard(select: button)
@@ -84,7 +76,7 @@ class ViewController: UIViewController {
       chosenButtons.removeAll()
       game.chosenCards.removeAll()
     }
-    if game.chosenCards.count < 3 {
+    if chosenButtons.count < 3 {
       if let indexOfChosenCard = buttons.index(of: sender) {
         
         let chosenCard = game.cardsOnTable[indexOfChosenCard]
@@ -141,25 +133,40 @@ class ViewController: UIViewController {
     button.layer.borderWidth = 0
     button.layer.borderColor = UIColor.white.cgColor
   }
-
+  
   @IBAction func addThreeCards(_ sender: UIButton) {
     if game.cards.count < 3 {
       sender.isEnabled = false
+      return
     }
-    var threeEmptyButtons = [UIButton]()
-    for button in buttons {
-      if button.isHidden {
-        threeEmptyButtons.append(button)
+    if chosenButtons.count == 3, game.cards.count >= 3 {
+      
+      let card1 = game.chosenCards[0]
+      let card2 = game.chosenCards[1]
+      let card3 = game.chosenCards[2]
+      
+      if game.areMakeASet(firsCard: card1, secondCard: card2, thirdCard: card3) {
+        let cardNew1 = game.cards.remove(at: 0)
+        let cardNew2 = game.cards.remove(at: 0)
+        let cardNew3 = game.cards.remove(at: 0)
+        renderCard(render: cardNew1, on: chosenButtons[0])
+        renderCard(render: cardNew2, on: chosenButtons[1])
+        renderCard(render: cardNew3, on: chosenButtons[2])
+        return
       }
-      if threeEmptyButtons.count >= 3 {
-        threeEmptyButtons.map({ (button: UIButton) -> UIButton in
-          button.isHidden = false
-          return button
-        })
-        break
+      
+      
+      
+      let shownButtons =  buttons.filter { $0.isHidden == true }
+      print("Hidden: \(shownButtons.count)")
+      if (shownButtons.count) < 3 {
+        addMore.isEnabled = false
+      }
+      else {
+        shownButtons[0].isHidden = false
+        shownButtons[1].isHidden = false
+        shownButtons[2].isHidden = false
       }
     }
-
   }
 }
-

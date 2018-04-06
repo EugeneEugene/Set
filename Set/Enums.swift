@@ -1,11 +1,3 @@
-//
-//  Enums.swift
-//  Set
-//
-//  Created by eugene on 13/03/2018.
-//  Copyright © 2018 eugene. All rights reserved.
-//
-
 import UIKit
 import GameplayKit
 
