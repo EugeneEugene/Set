@@ -8,10 +8,6 @@ class ViewController: UIViewController {
   
   @IBOutlet weak var addMore: UIButton!
   
-  func updateViewFromModel() {
-    
-  }
-  
   func renderCard(render card: Card, on button: UIButton) {
     
     let label = String(repeating: card.shape.rawValue, count: card.number.rawValue)
@@ -62,7 +58,6 @@ class ViewController: UIViewController {
         button.isHidden = false
       }
       countUnhiddentCards += 1
-      //can insert closure here
       button.layer.cornerRadius = 8.0
       game.cardsOnTable.append(card)
     }
@@ -71,11 +66,8 @@ class ViewController: UIViewController {
   
   @IBAction func touchCard(_ sender: UIButton) {
     if chosenButtons.count == 3 {
-      let card1 = game.chosenCards[0]
-      let card2 = game.chosenCards[1]
-      let card3 = game.chosenCards[2]
-      if game.areMakeASet(firsCard: card1, secondCard: card2, thirdCard: card3) {
-        replaceThreeCard(firsCard: card1, secondCard: card2, thirdCard: card3)
+      if game.areMakeASet() {
+        replaceThreeCard()
       }
       unSelectChosen()
     }
@@ -99,24 +91,14 @@ class ViewController: UIViewController {
       }
     }
     if game.chosenCards.count == 3 {
-      
-      //    if chosenButtons.count == 3 {
-      //      if chosenButtons.contains(sender) {
-      //        unSelectChosen()
-      //        return
-      //      }
-      let card1 = game.chosenCards[0]
-      let card2 = game.chosenCards[1]
-      let card3 = game.chosenCards[2]
-      if game.areMakeASet(firsCard: card1, secondCard: card2, thirdCard: card3) {
+      if game.areMakeASet() {
         showMatching()
+        addMore.isEnabled = true 
       }
       else {
         showNotMatching()
       }
     }
-    print("-------------------------------\n")
-    print("chosen cards: \(game.chosenCards.count)")
   }
   
   func showMatching() {
@@ -159,13 +141,9 @@ class ViewController: UIViewController {
     }
     if chosenButtons.count == 3, game.cards.count >= 3 {
       
-      let card1 = game.chosenCards[0]
-      let card2 = game.chosenCards[1]
-      let card3 = game.chosenCards[2]
-      
-      if game.areMakeASet(firsCard: card1, secondCard: card2, thirdCard: card3) {
+      if game.areMakeASet() {
         if game.cards.count >= 3 {
-          replaceThreeCard(firsCard: card1, secondCard: card2, thirdCard: card3)
+          replaceThreeCard()
         }
         else {
           chosenButtons[0].isHidden = true
@@ -173,10 +151,11 @@ class ViewController: UIViewController {
           chosenButtons[2].isHidden = true
         }
       }
+    }
         
       else {
+        print("kek")
         let shownButtons =  buttons.filter { $0.isHidden == true }
-        print("Hidden: \(shownButtons.count)")
         if (shownButtons.count) < 3 {
           addMore.isEnabled = false
         }
@@ -187,9 +166,9 @@ class ViewController: UIViewController {
         }
       }
     }
-  }
   
-  func replaceThreeCard(firsCard: Card, secondCard: Card, thirdCard: Card) {
+  
+  func replaceThreeCard() {
     let cardNew1 = game.cards.remove(at: 0)
     let cardNew2 = game.cards.remove(at: 0)
     let cardNew3 = game.cards.remove(at: 0)
@@ -197,5 +176,6 @@ class ViewController: UIViewController {
     renderCard(render: cardNew1, on: chosenButtons[0])
     renderCard(render: cardNew2, on: chosenButtons[1])
     renderCard(render: cardNew3, on: chosenButtons[2])
+    
   }
 }

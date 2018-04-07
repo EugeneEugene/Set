@@ -25,11 +25,15 @@ struct SetModel {
     cards.shuffle()
   }
   
-  func areMakeASet(firsCard: Card, secondCard: Card, thirdCard: Card) -> Bool {
-    let colors = [firsCard.color, secondCard.color, thirdCard.color]
-    let shapes = [firsCard.shape, secondCard.shape, thirdCard.shape]
-    let numbers = [firsCard.number, secondCard.number, thirdCard.number]
-    let shadings = [firsCard.shading, secondCard.shading, thirdCard.shading]
+  func areMakeASet() -> Bool {
+    let firstCard = chosenCards[0]
+    let secondCard = chosenCards[1]
+    let thirdCard = chosenCards[2]
+    
+    let colors = [firstCard.color, secondCard.color, thirdCard.color]
+    let shapes = [firstCard.shape, secondCard.shape, thirdCard.shape]
+    let numbers = [firstCard.number, secondCard.number, thirdCard.number]
+    let shadings = [firstCard.shading, secondCard.shading, thirdCard.shading]
     
     let uniqueColors = Array(Set(colors))
     let uniqueShapes = Array(Set(shapes))
