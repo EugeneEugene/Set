@@ -1,6 +1,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+  
   @IBOutlet var buttons: [UIButton]!
   lazy var game = SetModel()
   var chosenButtons = [UIButton]()
@@ -70,11 +71,13 @@ class ViewController: UIViewController {
   
   @IBAction func touchCard(_ sender: UIButton) {
     if chosenButtons.count == 3 {
-      for button in chosenButtons {
-        unSelectCard(select: button)
+      let card1 = game.chosenCards[0]
+      let card2 = game.chosenCards[1]
+      let card3 = game.chosenCards[2]
+      if game.areMakeASet(firsCard: card1, secondCard: card2, thirdCard: card3) {
+        replaceThreeCard(firsCard: card1, secondCard: card2, thirdCard: card3)
       }
-      chosenButtons.removeAll()
-      game.chosenCards.removeAll()
+      unSelectChosen()
     }
     if chosenButtons.count < 3 {
       if let indexOfChosenCard = buttons.index(of: sender) {
@@ -95,7 +98,13 @@ class ViewController: UIViewController {
         }
       }
     }
-    if chosenButtons.count == 3 {
+    if game.chosenCards.count == 3 {
+      
+      //    if chosenButtons.count == 3 {
+      //      if chosenButtons.contains(sender) {
+      //        unSelectChosen()
+      //        return
+      //      }
       let card1 = game.chosenCards[0]
       let card2 = game.chosenCards[1]
       let card3 = game.chosenCards[2]
@@ -134,6 +143,15 @@ class ViewController: UIViewController {
     button.layer.borderColor = UIColor.white.cgColor
   }
   
+  func unSelectChosen() {
+    for button in chosenButtons {
+      button.layer.borderWidth = 0
+      button.layer.borderColor = UIColor.white.cgColor
+    }
+    chosenButtons.removeAll()
+    game.chosenCards.removeAll()
+  }
+  
   @IBAction func addThreeCards(_ sender: UIButton) {
     if game.cards.count < 3 {
       sender.isEnabled = false
@@ -146,27 +164,38 @@ class ViewController: UIViewController {
       let card3 = game.chosenCards[2]
       
       if game.areMakeASet(firsCard: card1, secondCard: card2, thirdCard: card3) {
-        let cardNew1 = game.cards.remove(at: 0)
-        let cardNew2 = game.cards.remove(at: 0)
-        let cardNew3 = game.cards.remove(at: 0)
-        renderCard(render: cardNew1, on: chosenButtons[0])
-        renderCard(render: cardNew2, on: chosenButtons[1])
-        renderCard(render: cardNew3, on: chosenButtons[2])
-        return
+        if game.cards.count >= 3 {
+          replaceThreeCard(firsCard: card1, secondCard: card2, thirdCard: card3)
+        }
+        else {
+          chosenButtons[0].isHidden = true
+          chosenButtons[1].isHidden = true
+          chosenButtons[2].isHidden = true
+        }
       }
-      
-      
-      
-      let shownButtons =  buttons.filter { $0.isHidden == true }
-      print("Hidden: \(shownButtons.count)")
-      if (shownButtons.count) < 3 {
-        addMore.isEnabled = false
-      }
+        
       else {
-        shownButtons[0].isHidden = false
-        shownButtons[1].isHidden = false
-        shownButtons[2].isHidden = false
+        let shownButtons =  buttons.filter { $0.isHidden == true }
+        print("Hidden: \(shownButtons.count)")
+        if (shownButtons.count) < 3 {
+          addMore.isEnabled = false
+        }
+        else {
+          shownButtons[0].isHidden = false
+          shownButtons[1].isHidden = false
+          shownButtons[2].isHidden = false
+        }
       }
     }
+  }
+  
+  func replaceThreeCard(firsCard: Card, secondCard: Card, thirdCard: Card) {
+    let cardNew1 = game.cards.remove(at: 0)
+    let cardNew2 = game.cards.remove(at: 0)
+    let cardNew3 = game.cards.remove(at: 0)
+    game.chosenCards.removeAll()
+    renderCard(render: cardNew1, on: chosenButtons[0])
+    renderCard(render: cardNew2, on: chosenButtons[1])
+    renderCard(render: cardNew3, on: chosenButtons[2])
   }
 }
