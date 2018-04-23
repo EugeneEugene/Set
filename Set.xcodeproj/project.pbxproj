@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4486776F20877721001E718F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4486776E20877721001E718F /* CardView.swift */; };
+		4486777120879DAD001E718F /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4486777020879DAD001E718F /* Grid.swift */; };
 		44E94BC92054B56900F68F56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E94BC82054B56900F68F56 /* AppDelegate.swift */; };
 		44E94BCB2054B56900F68F56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E94BCA2054B56900F68F56 /* ViewController.swift */; };
 		44E94BCE2054B56900F68F56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44E94BCC2054B56900F68F56 /* Main.storyboard */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4486776E20877721001E718F /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		4486777020879DAD001E718F /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Grid.swift; path = ../../../Downloads/Grid.swift; sourceTree = "<group>"; };
 		44E94BC52054B56900F68F56 /* Set.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Set.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44E94BC82054B56900F68F56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44E94BCA2054B56900F68F56 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +68,8 @@
 				44E94BE020582A5B00F68F56 /* Enums.swift */,
 				44E94BDC20580AA100F68F56 /* Card.swift */,
 				44E94BCA2054B56900F68F56 /* ViewController.swift */,
+				4486776E20877721001E718F /* CardView.swift */,
+				4486777020879DAD001E718F /* Grid.swift */,
 				44E94BDE20580FF100F68F56 /* SetModel.swift */,
 				44E94BCC2054B56900F68F56 /* Main.storyboard */,
 				44E94BD42054B56900F68F56 /* Info.plist */,
@@ -108,7 +114,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = eugene;
 				TargetAttributes = {
 					44E94BC42054B56900F68F56 = {
@@ -154,9 +160,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				44E94BDF20580FF100F68F56 /* SetModel.swift in Sources */,
+				4486776F20877721001E718F /* CardView.swift in Sources */,
 				44E94BCB2054B56900F68F56 /* ViewController.swift in Sources */,
 				44E94BE120582A5B00F68F56 /* Enums.swift in Sources */,
 				44E94BDD20580AA100F68F56 /* Card.swift in Sources */,
+				4486777120879DAD001E718F /* Grid.swift in Sources */,
 				44E94BC92054B56900F68F56 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -197,6 +205,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -204,6 +213,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -254,6 +264,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -261,6 +272,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
