@@ -12,20 +12,19 @@ import UIKit
 class CardView: UIView {
   @IBInspectable
   var color = UIColor.red
-  var shape = Shape.Triangle
+  var shape = Card.Shape.Triangle
   @IBInspectable
   var number = 3
-  var shading = Shading.Striped
+  var shading = Card.Shading.Striped
   lazy var grid = Grid(layout: .dimensions(rowCount: 3, columnCount: 1), frame: self.bounds)
   
   
   override func draw(_ rect: CGRect) {
     let context = UIGraphicsGetCurrentContext()
     let roundedRect = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
-    roundedRect.addClip()
+    
     UIColor.white.setFill()
     roundedRect.fill()
-    roundedRect.addClip()
     var grids = [CGRect]()
     switch number {
     case 1:
@@ -40,9 +39,11 @@ class CardView: UIView {
     default:
       assert(false, "Incorrect quantity of shapes")
     }
-
+    
     var figurePath = UIBezierPath()
+    print("count of greeds: \(grids.count)")
     for grid1 in grids {
+//      print("nun")
       switch shape {
       case .Sphere:
         figurePath = UIBezierPath(arcCenter: CGPoint(x: grid1.midX, y: grid1.midY), radius: grid1.height/4, startAngle: CGFloat(0.0), endAngle: CGFloat(Double.pi*2), clockwise: true)
@@ -51,7 +52,7 @@ class CardView: UIView {
         let squareRect = CGRect(x: grid1.midX/2, y: grid1.minY, width: grid1.height, height: grid1.height)
         figurePath = UIBezierPath(rect: squareRect.zoom(by: 0.5))
       case .Triangle:
-
+        
         figurePath.move(to: CGPoint(x: grid1.midX, y: grid1.midY - 1/4*grid1.height))
         figurePath.addLine(to: CGPoint(x: grid1.midX+1/4*grid1.width, y: grid1.midY+1/4*grid1.height))
         figurePath.addLine(to: CGPoint(x: grid1.midX-1/4*grid1.width, y: grid1.midY+1/4*grid1.height))
@@ -66,32 +67,21 @@ class CardView: UIView {
       case .Outlined:
         color.setStroke()
         figurePath.stroke()
-      case .Striped: 
-       var newGrid = Grid(layout:  .dimensions(rowCount: 1, columnCount: 200), frame: grid1)
-       for i in 0..<newGrid.cellCount {
-        if i%5 == 0 {
-          let line = UIBezierPath(rect: newGrid[0,i]!)
-          color.setFill()
-          line.fill()
+      case .Striped:
+        var newGrid = Grid(layout:  .dimensions(rowCount: 1, columnCount: 200), frame: grid1)
+        for i in 0..<newGrid.cellCount {
+          if i%5 == 0 {
+            let line = UIBezierPath(rect: newGrid[0,i]!)
+            color.setFill()
+            line.fill()
+          }
         }
-        }
-       color.setStroke()
-       figurePath.stroke()
-       context?.restoreGState()
+        color.setStroke()
+        figurePath.stroke()
       }
+        context?.restoreGState()
     }
-  }
-  
-  enum Shading: String {
-    case Striped = "Striped", Filled = "Filled", Outlined = "Outlined"
-  }
-  
-  enum Number: Int {
-    case One = 1, Two, Three
-  }
-  
-  enum Shape: String {
-    case Sphere, Square, Triangle
+    
   }
 }
 

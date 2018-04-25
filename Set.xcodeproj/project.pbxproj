@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		442D117B208E35C00056D57B /* CardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442D117A208E35C00056D57B /* CardDeck.swift */; };
+		442D117D2090A21B0056D57B /* PlayingTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442D117C2090A21B0056D57B /* PlayingTable.swift */; };
 		4486776F20877721001E718F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4486776E20877721001E718F /* CardView.swift */; };
 		4486777120879DAD001E718F /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4486777020879DAD001E718F /* Grid.swift */; };
 		44E94BC92054B56900F68F56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E94BC82054B56900F68F56 /* AppDelegate.swift */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		442D117A208E35C00056D57B /* CardDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDeck.swift; sourceTree = "<group>"; };
+		442D117C2090A21B0056D57B /* PlayingTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingTable.swift; sourceTree = "<group>"; };
 		4486776E20877721001E718F /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		4486777020879DAD001E718F /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Grid.swift; path = ../../../Downloads/Grid.swift; sourceTree = "<group>"; };
 		44E94BC52054B56900F68F56 /* Set.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Set.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,7 +71,9 @@
 				44E94BDB2054B5E400F68F56 /* Support files */,
 				44E94BE020582A5B00F68F56 /* Enums.swift */,
 				44E94BDC20580AA100F68F56 /* Card.swift */,
+				442D117C2090A21B0056D57B /* PlayingTable.swift */,
 				44E94BCA2054B56900F68F56 /* ViewController.swift */,
+				442D117A208E35C00056D57B /* CardDeck.swift */,
 				4486776E20877721001E718F /* CardView.swift */,
 				4486777020879DAD001E718F /* Grid.swift */,
 				44E94BDE20580FF100F68F56 /* SetModel.swift */,
@@ -161,11 +167,13 @@
 			files = (
 				44E94BDF20580FF100F68F56 /* SetModel.swift in Sources */,
 				4486776F20877721001E718F /* CardView.swift in Sources */,
+				442D117B208E35C00056D57B /* CardDeck.swift in Sources */,
 				44E94BCB2054B56900F68F56 /* ViewController.swift in Sources */,
 				44E94BE120582A5B00F68F56 /* Enums.swift in Sources */,
 				44E94BDD20580AA100F68F56 /* Card.swift in Sources */,
 				4486777120879DAD001E718F /* Grid.swift in Sources */,
 				44E94BC92054B56900F68F56 /* AppDelegate.swift in Sources */,
+				442D117D2090A21B0056D57B /* PlayingTable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

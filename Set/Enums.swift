@@ -1,16 +1,22 @@
 import UIKit
 import GameplayKit
 
-enum Shading: String {
-  case Striped = "Striped", Filled = "Filled", Outlined = "Outlined"
+enum Shading {
+  case Striped, Filled, Outlined
+  static let all = [Shading.Striped, .Filled, .Outlined]
 }
 
-enum Number: Int {
-  case One = 1, Two, Three
+enum Number {
+  static var all = [1, 2, 3]
 }
 
-enum Shape: String {
-  case Sphere = "●", Square = "■", Triangle = "▲"
+enum Shape {
+  case Sphere, Square, Triangle
+  static let all = [Shape.Sphere, .Square, .Triangle]
+}
+
+enum Color {
+  static let all = [UIColor.red, .green, .purple]
 }
 
 extension Array {
