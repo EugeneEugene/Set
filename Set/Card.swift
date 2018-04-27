@@ -9,7 +9,7 @@ struct Card: Equatable {
     init(put shape: Shape, times number: Int, apply shading: Shading, paint color: UIColor) {
         self.shape = shape
         self.number = number
-        self.shading = sh    ading
+        self.shading = shading
         self.color = color
     }
     

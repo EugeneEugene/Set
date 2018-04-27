@@ -19,9 +19,7 @@ class CardView: UIView {
     lazy var grid = Grid(layout: .dimensions(rowCount: 3, columnCount: 1), frame: self.bounds)
     
     override func draw(_ rect: CGRect) {
-        self.isOpaque = false
-        UIColor.clear.setFill()
-        UIRectFill(rect)
+        self.backgroundColor = UIColor.yellow
         let context = UIGraphicsGetCurrentContext()
         let roundedRect = UIBezierPath(roundedRect: bounds.zoom(by: 0.85), cornerRadius: cornerRadius)
         UIColor.white.setFill()
@@ -42,9 +40,7 @@ class CardView: UIView {
         }
         
         var figurePath = UIBezierPath()
-        print("count of greeds: \(grids.count)")
         for grid1 in grids {
-            //      print("nun")
             switch shape {
             case .Sphere:
                 figurePath = UIBezierPath(arcCenter: CGPoint(x: grid1.midX, y: grid1.midY), radius: grid1.height/4, startAngle: CGFloat(0.0), endAngle: CGFloat(Double.pi*2), clockwise: true)
@@ -52,6 +48,7 @@ class CardView: UIView {
             case .Square:
                 let squareRect = CGRect(x: grid1.midX/2, y: grid1.minY, width: grid1.height, height: grid1.height)
                 figurePath = UIBezierPath(rect: squareRect.zoom(by: 0.5))
+                
             case .Triangle:
                 //fix thet with "origin from stanford api"
                 figurePath.move(to: CGPoint(x: grid1.midX, y: grid1.midY - 1/4*grid1.height))
@@ -80,13 +77,12 @@ class CardView: UIView {
                         line.fill()
                     }
                 }
-                color.setStroke()
-                figurePath.stroke()
             }
             context?.restoreGState()
         }
         
     }
+    
 }
 
 extension CardView {

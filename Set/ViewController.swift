@@ -8,6 +8,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var playingTable: PlayingTable!
     
     override func viewDidLoad() {
+        playingTable.grid = Grid(layout: .dimensions(rowCount: 3, columnCount: 2), frame: playingTable.bounds)
+
         for index in 0..<playingTable.grid.cellCount{
             let card = deck.remove(at: 0)
             let cardView = CardView(frame: playingTable.grid[index]!)
@@ -15,9 +17,6 @@ class ViewController: UIViewController {
             cardView.number = card.number
             cardView.shape = card.shape
             cardView.shading = card.shading
-            
-            cardView.accessibilityFrame =  cardView.accessibilityFrame.zoom(by: 0.25)
-            
             playingTable.addSubview(cardView)
         }
         super.viewDidLoad()
