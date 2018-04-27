@@ -37,27 +37,25 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NVX-pV-ua3">
+                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NVX-pV-ua3">
                                 <rect key="frame" x="0.0" y="20" width="375" height="591"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jz5-w9-0Fm" customClass="PlayingTable" customModule="Set" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-22" width="375" height="613"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NTs-Aa-SN2" customClass="CardView" customModule="Set" customModuleProvider="target">
-                                                <rect key="frame" x="67" y="176" width="240" height="330"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </view>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <view opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jz5-w9-0Fm" customClass="PlayingTable" customModule="Set" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="587.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="jz5-w9-0Fm" firstAttribute="top" secondItem="NVX-pV-ua3" secondAttribute="top" id="T5n-iD-aVt"/>
+                                    <constraint firstAttribute="trailing" secondItem="jz5-w9-0Fm" secondAttribute="trailing" id="wO1-lv-5eL"/>
+                                    <constraint firstItem="jz5-w9-0Fm" firstAttribute="leading" secondItem="NVX-pV-ua3" secondAttribute="leading" id="yG7-Yw-ghz"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="yre-fi-2VC" firstAttribute="top" secondItem="jz5-w9-0Fm" secondAttribute="bottom" id="5tz-AT-nP7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="yre-fi-2VC" secondAttribute="bottom" constant="20.5" id="6ik-XZ-S1d"/>
                             <constraint firstItem="yre-fi-2VC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="KrU-0v-f2h"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NVX-pV-ua3" secondAttribute="trailing" id="U6x-3l-bfE"/>
