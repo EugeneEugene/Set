@@ -1,26 +1,17 @@
-//
-//  PlayingCardView.swift
-//  Set
-//
-//  Created by eugene on 18/04/2018.
-//  Copyright © 2018 eugene. All rights reserved.
-//
-
 import UIKit
 
-@IBDesignable
 class CardView: UIView {
-    @IBInspectable
     var color = UIColor.red
     var shape = Card.Shape.Triangle
-    @IBInspectable
     var number = 3
     var shading = Card.Shading.Striped
-    lazy var grid = Grid(layout: .dimensions(rowCount: 3, columnCount: 1), frame: self.bounds)
+    lazy var grid = Grid(layout: .dimensions(rowCount: 3, columnCount: 1), frame: bounds.zoom(by: 0.8))
     
     override func draw(_ rect: CGRect) {
         self.backgroundColor = UIColor.yellow
         let context = UIGraphicsGetCurrentContext()
+        UIColor.yellow.setFill()
+        context?.fill(rect)
         let roundedRect = UIBezierPath(roundedRect: bounds.zoom(by: 0.85), cornerRadius: cornerRadius)
         UIColor.white.setFill()
         roundedRect.fill()
@@ -43,14 +34,15 @@ class CardView: UIView {
         for grid1 in grids {
             switch shape {
             case .Sphere:
-                figurePath = UIBezierPath(arcCenter: CGPoint(x: grid1.midX, y: grid1.midY), radius: grid1.height/4, startAngle: CGFloat(0.0), endAngle: CGFloat(Double.pi*2), clockwise: true)
+                figurePath = UIBezierPath(arcCenter: CGPoint(x: grid1.midX, y: grid1.midY), radius: SizeRatio.drawingSize(grid: grid)/2 , startAngle: CGFloat(0.0), endAngle: CGFloat(Double.pi*2), clockwise: true)
                 UIColor.red.setFill()
             case .Square:
-                let squareRect = CGRect(x: grid1.midX/2, y: grid1.minY, width: grid1.height, height: grid1.height)
-                figurePath = UIBezierPath(rect: squareRect.zoom(by: 0.5))
+                let sqrSideLength = SizeRatio.drawingSize(grid: grid)
+                let size = CGSize(width: sqrSideLength , height: sqrSideLength )
+                let squareRect2 = CGRect(origin: CGPoint(x: grid1.midX - SizeRatio.drawingSize(grid: grid)/2, y: grid1.midY - SizeRatio.drawingSize(grid: grid)/2), size: size)
+                figurePath = UIBezierPath(rect: squareRect2.zoom(by: 0.75))
                 
             case .Triangle:
-                //fix thet with "origin from stanford api"
                 figurePath.move(to: CGPoint(x: grid1.midX, y: grid1.midY - 1/4*grid1.height))
                 figurePath.addLine(to: CGPoint(x: grid1.midX+1/4*grid1.width, y: grid1.midY+1/4*grid1.height))
                 figurePath.addLine(to: CGPoint(x: grid1.midX-1/4*grid1.width, y: grid1.midY+1/4*grid1.height))
@@ -66,10 +58,8 @@ class CardView: UIView {
                 figurePath.fill()
             case .Outlined:
                 color.setStroke()
-                figurePath.stroke()
             case .Striped:
-                var newGrid = Grid(layout:  .dimensions(rowCount: 1, columnCount: 200), frame: grid1)
-                //stripping figures
+                var newGrid = Grid(layout:  .dimensions(rowCount: 1, columnCount: 200), frame: self.bounds)
                 for i in 0..<newGrid.cellCount {
                     if i%5 == 0 {
                         let line = UIBezierPath(rect: newGrid[0,i]!)
@@ -79,6 +69,8 @@ class CardView: UIView {
                 }
             }
             context?.restoreGState()
+            color.setStroke()
+            figurePath.stroke()
         }
         
     }
@@ -88,6 +80,9 @@ class CardView: UIView {
 extension CardView {
     private struct SizeRatio {
         static let cornerRadiusToBoundsHeight: CGFloat = 0.06
+        static func drawingSize(grid: Grid) -> CGFloat {
+            return grid.cellSize.height > grid.cellSize.width ? grid.cellSize.width : grid.cellSize.height
+        }
     }
     
     private var cornerRadius: CGFloat {

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,11 +16,15 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Set" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="yre-fi-2VC">
-                                <rect key="frame" x="16" y="607.5" width="343" height="39"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jz5-w9-0Fm" customClass="PlayingTable" customModule="Set" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="414" height="651.66666666666663"/>
+                                <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="yre-fi-2VC">
+                                <rect key="frame" x="20" y="676.66666666666663" width="374" height="39"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YQj-aZ-Gsb">
                                         <rect key="frame" x="0.0" y="0.0" width="102" height="39"/>
@@ -29,7 +34,7 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kmy-yf-kgA">
-                                        <rect key="frame" x="279" y="0.0" width="64" height="39"/>
+                                        <rect key="frame" x="310" y="0.0" width="64" height="39"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="Button">
                                             <color key="titleColor" red="0.078431372549019607" green="0.14117647058823529" blue="0.72549019607843135" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -37,32 +42,16 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NVX-pV-ua3">
-                                <rect key="frame" x="0.0" y="20" width="375" height="591"/>
-                                <subviews>
-                                    <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jz5-w9-0Fm" customClass="PlayingTable" customModule="Set" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="587.5"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="jz5-w9-0Fm" firstAttribute="top" secondItem="NVX-pV-ua3" secondAttribute="top" id="T5n-iD-aVt"/>
-                                    <constraint firstAttribute="trailing" secondItem="jz5-w9-0Fm" secondAttribute="trailing" id="wO1-lv-5eL"/>
-                                    <constraint firstItem="jz5-w9-0Fm" firstAttribute="leading" secondItem="NVX-pV-ua3" secondAttribute="leading" id="yG7-Yw-ghz"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="yre-fi-2VC" firstAttribute="top" secondItem="jz5-w9-0Fm" secondAttribute="bottom" id="5tz-AT-nP7"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="yre-fi-2VC" secondAttribute="bottom" constant="20.5" id="6ik-XZ-S1d"/>
-                            <constraint firstItem="yre-fi-2VC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="KrU-0v-f2h"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NVX-pV-ua3" secondAttribute="trailing" id="U6x-3l-bfE"/>
-                            <constraint firstItem="NVX-pV-ua3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aw9-Mp-0pC"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yre-fi-2VC" secondAttribute="trailing" constant="16" id="jcR-Fu-3HF"/>
-                            <constraint firstItem="NVX-pV-ua3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="uUD-pC-vTd"/>
-                            <constraint firstItem="yre-fi-2VC" firstAttribute="top" secondItem="NVX-pV-ua3" secondAttribute="bottom" priority="750" constant="-3.5" id="usQ-ZC-Kk0"/>
+                            <constraint firstItem="yre-fi-2VC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="05W-Yn-hFx"/>
+                            <constraint firstItem="yre-fi-2VC" firstAttribute="top" secondItem="jz5-w9-0Fm" secondAttribute="bottom" constant="5" id="7zu-6W-nIp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yre-fi-2VC" secondAttribute="trailing" constant="20" id="HCb-Ki-3CX"/>
+                            <constraint firstItem="jz5-w9-0Fm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Jqy-T1-Vf2"/>
+                            <constraint firstItem="jz5-w9-0Fm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Yai-jk-kvG"/>
+                            <constraint firstItem="jz5-w9-0Fm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Zzy-Va-jo6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="yre-fi-2VC" secondAttribute="bottom" constant="20.5" id="pQh-cB-DJX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -72,7 +61,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+            <point key="canvasLocation" x="136.23188405797103" y="132.88043478260872"/>
         </scene>
     </scenes>
 </document>

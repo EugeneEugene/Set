@@ -21,6 +21,7 @@ struct CardDeck {
                 }
             }
         }
+        deck.shuffle()
     }
     
 }
